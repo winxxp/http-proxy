@@ -15,7 +15,8 @@ func main() {
 	}
 
 	proxy := goproxy.NewProxyHttpServer()
-	
+	proxy.Verbose = true
+
 	log.Printf("proxy listening on %s:%s\n", httpHost, httpPort)
 	log.Fatal(http.ListenAndServe(httpHost+":"+httpPort, proxy))
 }
