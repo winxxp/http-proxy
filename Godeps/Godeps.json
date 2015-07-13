@@ -1,0 +1,11 @@
+{
+	"ImportPath": "github.com/winxxp/http-proxy",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/winxxp/goproxy",
+			"Comment": "v1.0-61-g2624781",
+			"Rev": "2624781dc373cecd1136cafdaaaeba6c9bb90e96"
+		}
+	]
+}
