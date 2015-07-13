@@ -7,7 +7,14 @@ import (
 )
 
 func main() {
+	httpHost := os.Getenv("HOST")
+	httpPort := os.Getenv("PORT")
+	if httpPort == "" {
+		httpPort = "80"
+	}
+
 	proxy := goproxy.NewProxyHttpServer()
-	log.Println("start:80")
-	log.Fatal(http.ListenAndServe(":80", proxy))
+	
+	log.Printf("proxy listening on %s:%s\n", httpHost, httpPort)
+	log.Fatal(http.ListenAndServe(httpHost+":"+httpPort, proxy))
 }
