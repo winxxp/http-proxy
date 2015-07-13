@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/winxxp/goproxy"
+	"os"
 	"log"
 	"net/http"
 )
