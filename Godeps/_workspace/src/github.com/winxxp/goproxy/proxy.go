@@ -95,13 +95,13 @@ func removeProxyHeaders(ctx *ProxyCtx, r *http.Request) {
 func (proxy *ProxyHttpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	//r.Header["X-Forwarded-For"] = w.RemoteAddr()
 	log.Printf("--1-- :%#v\n", r)
+
 	if r.Method == "CONNECT" {
 		proxy.handleHttps(w, r)
 	} else {
 		ctx := &ProxyCtx{Req: r, Session: atomic.AddInt64(&proxy.sess, 1), proxy: proxy}
 
 		var err error
-		ctx.Logf(r.URL.Path)
 		ctx.Logf("Got request %v %v %v %v", r.URL.Path, r.Host, r.Method, r.URL.String())
 		if !r.URL.IsAbs() {
 			proxy.NonproxyHandler.ServeHTTP(w, r)
